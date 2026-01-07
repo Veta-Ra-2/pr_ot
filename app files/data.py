@@ -20,7 +20,7 @@ def load_heart_disease_experiment_dataset(file_path):
 
     # Заполняем пропуски медианами
     for col in cols_with_missing:
-        df[col].fillna(df[col].median(), inplace=True)
+        df[col] = df[col].fillna(df[col].median())
 
     # Убираем выбросы по IQR для всех числовых признаков (кроме Outcome)
     numeric_cols = df.drop(columns="Outcome").columns
@@ -88,7 +88,7 @@ def load_heart_disease_dataset(file_path):
 
     # Заполняем пропуски медианой
     for col in X.columns:
-        X[col].fillna(X[col].median(), inplace=True)
+        X[col] = X[col].fillna(X[col].median())
 
     # Убираем выбросы по IQR для этих 2 признаков
     for col in X.columns:
